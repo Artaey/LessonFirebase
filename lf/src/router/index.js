@@ -13,7 +13,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/about/:id',
+      path: '/about',
       name: 'about',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -21,7 +21,29 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
       meta: {
         title: "About",
-      }
+      },
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('@/views/ContactView.vue'),
+      meta: {
+        title: "Contact",
+      },
+    },
+    {
+      path: '/users/:userId',
+      name: 'users',
+      component: () => import('@/views/UserView.vue'),
+      meta: {
+        title: "User",
+      },
+      children: [
+        {
+          path: "profile",
+          component: () => import('@/views/UserView.vue')
+        }
+      ]
     }
   ]
 })
